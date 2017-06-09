@@ -1,9 +1,11 @@
 package me.lbing.pojo;
 
+import java.io.Serializable;
+
 /**
  * Created by King on 2017/6/6.
  */
-public class User {
+public class User implements Serializable {
     private String userId;
     private String username;
     private String password;

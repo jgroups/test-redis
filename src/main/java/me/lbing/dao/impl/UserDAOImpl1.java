@@ -29,7 +29,7 @@ public class UserDAOImpl1 implements UserDAO {
 
         final RedisTemplate redisTemplate = redisTemplateFactory.getLocalRedisTemplate();
 
-        boolean result = (boolean) redisTemplate.execute(new RedisCallback(){
+        boolean result = (boolean) redisTemplate.execute(new RedisCallback() {
 
             @SuppressWarnings("rawtypes")
             @Override
@@ -46,14 +46,16 @@ public class UserDAOImpl1 implements UserDAO {
         return result;
     }
 
-    /** 添加一个User的List对象*/
+    /**
+     * 添加一个User的List对象
+     */
     @SuppressWarnings("unchecked")
     @Override
     public boolean add(List<User> list) {
 
         final RedisTemplate redisTemplate = redisTemplateFactory.getLocalRedisTemplate();
 
-        return (boolean) redisTemplate.execute(new RedisCallback(){
+        return (boolean) redisTemplate.execute(new RedisCallback() {
 
                                                    @SuppressWarnings("rawtypes")
                                                    @Override
@@ -62,7 +64,7 @@ public class UserDAOImpl1 implements UserDAO {
 
                                                        RedisSerializer keySerializer = redisTemplate.getKeySerializer();
                                                        RedisSerializer<User> valueSerializer = redisTemplate.getValueSerializer();
-                                                       for(User user : list){
+                                                       for (User user : list) {
                                                            byte[] key = keySerializer.serialize(user.getUserId());
                                                            byte[] value = valueSerializer.serialize(user);
                                                            connection.setNX(key, value);
@@ -72,5 +74,35 @@ public class UserDAOImpl1 implements UserDAO {
                                                },
                 false,
                 true);
+    }
+
+    @Override
+    public void delete(String key) {
+
+    }
+
+    @Override
+    public void delete(List<String> keys) {
+
+    }
+
+    @Override
+    public boolean update(User user) throws Exception {
+        return false;
+    }
+
+    @Override
+    public User get(String keyId) {
+        return null;
+    }
+
+    @Override
+    public boolean opsForList(String key, User user) {
+        return false;
+    }
+
+    @Override
+    public boolean getListValueByIndex(String key, int index) {
+        return false;
     }
 }

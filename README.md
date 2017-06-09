@@ -23,3 +23,11 @@ SDR官方文档中对Redistemplate的介绍：the template is in fact the centra
   _(1)低级封装_
 低级封装的操作是通过连接到Redis的Connection对象，直接对Redis数据进行操作。
 低级封装的核心是：`redisTemplate.execute(new RedisCallback(){})`
+
+  **4、注意事项**
+
+  搭建Spring与Reids的环境时，重点在于在Spring容器中配置RedisTemplate和ConnectionFactory，以及封装RedisTemplate组件。
+  
+  Spring Data Redis 1.x binaries requires JDK level 6.0 and above, and Spring Framework 4.2.6.RELEASE and above.
+  
+  Redis默认有16个数据库，在配置文件中，设置Redis需要使用的哪个Redis数据库，应该使用属性“database”，而不是“dbIndex（自定义）”这个属性。
