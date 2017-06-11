@@ -78,13 +78,13 @@ public class UserDAOImpl1 implements UserDAO {
 
     @Override
     public void delete(String key) {
-        final RedisTemplate redisTemplate = redisTemplateFactory.getLocalRedisTemplate();
-        redisTemplate.execute(new RedisCallback() {
-            @Override
-            public Object doInRedis(RedisConnection redisConnection) throws DataAccessException {
-                return null;
-            }
-        });
+//        final RedisTemplate redisTemplate = redisTemplateFactory.getLocalRedisTemplate();
+//        redisTemplate.execute(new RedisCallback() {
+//            @Override
+//            public Object doInRedis(RedisConnection redisConnection) throws DataAccessException {
+//                return null;
+//            }
+//        });
 
     }
 
